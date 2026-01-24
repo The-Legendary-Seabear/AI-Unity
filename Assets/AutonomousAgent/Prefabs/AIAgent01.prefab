@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 234416575159336382}
   - component: {fileID: 9106548432884386076}
   - component: {fileID: 1348492188370266469}
+  - component: {fileID: 2737274097254776369}
   - component: {fileID: 6271189584614797414}
   - component: {fileID: 5980273344040042512}
   - component: {fileID: 89600171969792416}
@@ -36,6 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 475914692115977489}
+  - {fileID: 4820365721347682012}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &234416575159336382
@@ -78,6 +80,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KinematicMovement
   maxSpeed: 5
   maxForce: 5
+--- !u!114 &2737274097254776369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4036634091276687436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752842416c959d143b540c3272f4ec92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DistancePerception
+  info: 
+  tagName: Flee
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  maxDistance: 0
+  maxAngle: 0
 --- !u!114 &6271189584614797414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +113,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DistancePerception
   info: Seek
   tagName: Agent02
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
   maxDistance: 5
   maxAngle: 180
 --- !u!23 &5980273344040042512
@@ -164,6 +188,37 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7386382989322359288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4820365721347682012}
+  m_Layer: 0
+  m_Name: Perception
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4820365721347682012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7386382989322359288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1, y: -0.666, z: 0.382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2956765004270883841}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1038856094162911994
 PrefabInstance:
   m_ObjectHideFlags: 0
