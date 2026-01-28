@@ -1,11 +1,5 @@
-//using System.Numerics;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
-//using System.Drawing;
-//using Unity.VisualScripting;
+
 
 public class AutonomousAgent : AIAgent
 {
@@ -25,6 +19,10 @@ public class AutonomousAgent : AIAgent
     [SerializeField] float wanderRadius = 1;
     [SerializeField] float wanderDistance = 1;
     [SerializeField] float wanderDisplacement = 1;
+
+    [Header("Obstacle")]
+    [SerializeField] Perception obstaclePerception;
+    [SerializeField, Range(0, 5)] float obstacleWeight = 1;
 
     float wanderAngle = 0.0f;
 
@@ -73,6 +71,16 @@ public class AutonomousAgent : AIAgent
                 movement.ApplyForce(Cohesion(gameObjects) * cohesionWeight);
                 movement.ApplyForce(Separation(gameObjects, separationRadius) * separationWeight);
                 movement.ApplyForce(Alignment(gameObjects) * alignmentWeight);
+            }
+        }
+
+        if(obstaclePerception != null && obstaclePerception.GetGameObjectInDirection(transform.forward) != null)
+        {
+            Vector3 openDirection = Vector3.zero;
+            if(obstaclePerception.GetOpenDirection(ref openDirection))
+            {
+                hasTarget = true;
+                movement.ApplyForce(GetSteeringForce(openDirection) * obstacleWeight);
             }
         }
 

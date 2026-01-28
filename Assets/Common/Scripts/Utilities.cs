@@ -1,5 +1,4 @@
 using System;
-using System.Drawing;
 using UnityEngine;
 
 public static class Utilities
@@ -36,9 +35,9 @@ public static class Utilities
         return v;
     }
 
-    public static Vector3[] GetDirectionsInCircle(int num, float angle)
+    public static Vector3[] GetDirectionsInCircle(int num, float halfAngle)
     {
-        if (num <= 0) return null;
+        if (num <= 0) return Array.Empty<Vector3>();
         if (num == 1) return new Vector3[] { Vector3.forward };
 
         // create array of vector3
@@ -53,7 +52,7 @@ public static class Utilities
         }
 
         // compute angle between rays (angle * 2 / num rays - 1)
-        float angleOffset = (angle * 2) / (num - 1);
+        float angleOffset = (halfAngle * 2) / (num);
 
         // add directions symmetrically around the circle
         for (int i = 1; i <= num / 2; i++)

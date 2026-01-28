@@ -32,10 +32,11 @@ Transform:
   m_GameObject: {fileID: 1968942184705365182}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 2.35}
+  m_LocalPosition: {x: 0, y: 1.093, z: 2.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 9206295404231436404}
   - {fileID: 8817202505138539174}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -70,6 +71,8 @@ MonoBehaviour:
   wanderRadius: 1
   wanderDistance: 1
   wanderDisplacement: 10
+  obstaclePerception: {fileID: 4125404295988480185}
+  obstacleWeight: 1
 --- !u!114 &1139064106231619949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +105,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 5
-  maxAngle: 180
+  maxHalfAngle: 180
+  debug: 1
+  debugColor: {r: 0.9308176, g: 0.23674129, b: 0.20196973, a: 1}
 --- !u!114 &5322627549432436970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +126,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   maxDistance: 4
-  maxAngle: 90
+  maxHalfAngle: 180
+  debug: 0
+  debugColor: {r: 1, g: 1, b: 1, a: 1}
   numRays: 20
 --- !u!23 &6199517302895427974
 MeshRenderer:
@@ -193,6 +200,60 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4480376070963188422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9206295404231436404}
+  - component: {fileID: 4125404295988480185}
+  m_Layer: 0
+  m_Name: Perception
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9206295404231436404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4480376070963188422}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.004, y: 0.667, z: 0.364}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9176937329562156633}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4125404295988480185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4480376070963188422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e8adf34ed8c754e9343ac2e62d3158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RaycastPerception
+  info: Object
+  tagName: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  maxDistance: 4.38
+  maxHalfAngle: 42
+  debug: 1
+  debugColor: {r: 0.81081617, g: 0.94509804, b: 0.21568626, a: 1}
+  numRays: 20
 --- !u!1001 &169340225844545168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,7 +360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648425310868573238, guid: 818c5a1ba0d9810439f11299463f2294, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.193
       objectReference: {fileID: 0}
     - target: {fileID: 8648425310868573238, guid: 818c5a1ba0d9810439f11299463f2294, type: 3}
       propertyPath: m_LocalPosition.z
