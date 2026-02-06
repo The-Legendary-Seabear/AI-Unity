@@ -28,6 +28,15 @@ public class DistancePerception : Perception
                 }
             }
         }
+        // sort by distance(nearest first)
+        result.Sort((a, b) =>
+        {
+            // get distance between transform position and a/b position
+            float distA = (transform.position - a.transform.position).sqrMagnitude;
+            float distB = (transform.position - b.transform.position).sqrMagnitude;
+            // Since smaller distances should come first, this sorts by nearest object
+            return distA.CompareTo(distB);
+        });
 
         return result.ToArray();
     }

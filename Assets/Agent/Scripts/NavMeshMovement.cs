@@ -1,0 +1,34 @@
+using UnityEngine;
+using UnityEngine.AI;
+
+[RequireComponent(typeof(NavMeshAgent))]
+public class NavMeshMovement : Movement
+{
+    NavMeshAgent navMeshAgent;
+
+    private void Awake()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    public override Vector3 Velocity
+    {
+        get
+        {
+            return navMeshAgent.velocity;
+        }
+        set
+        {
+            navMeshAgent.destination = value;
+        }
+    }
+    public override Vector3 Destination
+    {
+        get {
+            return navMeshAgent.destination;
+        }
+        set {
+            navMeshAgent.velocity = value;
+        }
+    }
+}

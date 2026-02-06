@@ -104,6 +104,9 @@ public class AutonomousAgent : AIAgent
             transform.rotation = Quaternion.LookRotation(movement.Velocity, Vector3.up);
         }
 
+        Vector3 pos = transform.position;
+        pos.y = 0f; // force Y to ground
+        transform.position = pos;
     }
 
 
@@ -126,8 +129,8 @@ public class AutonomousAgent : AIAgent
         // steer towards the center point
         Vector3 force = direction.normalized;//< steer towards direction>
 
-
-    return force;
+        force.y = 0f;
+        return force;
     }
     
 
@@ -153,6 +156,7 @@ public class AutonomousAgent : AIAgent
         // steer towards the separation point
         Vector3 force = (separation.magnitude > 0) ? GetSteeringForce(separation) : Vector3.zero; //(< separation length is greater than 0 >) ? GetSteeringForce(separation) : Vector3.zero;
 
+        force.y = 0f;
         return force;
     }
 
@@ -177,8 +181,8 @@ public class AutonomousAgent : AIAgent
         // steer towards the average velocity
         Vector3 force = GetSteeringForce(averageVelocity);//< steer towards average velocity >
 
-
-    return force;
+        force.y = 0f;
+        return force;
     }
 
 
@@ -197,6 +201,7 @@ public class AutonomousAgent : AIAgent
         //Debug.DrawLine(transform.position, transform.position + circleCenter, Color.blue);
         //Debug.DrawLine(transform.position, transform.position + circleCenter + pointOnCircle, Color.red);
 
+        force.y = 0f;
         return force;
     }
 
@@ -205,6 +210,7 @@ public class AutonomousAgent : AIAgent
     {
         Vector3 direction = go.transform.position - transform.position;
         Vector3 force = GetSteeringForce(direction);
+        force.y = 0f;
         return force;
     }
 
@@ -212,6 +218,7 @@ public class AutonomousAgent : AIAgent
     {
         Vector3 direction = transform.position - go.transform.position;
         Vector3 force = GetSteeringForce(direction);
+        force.y = 0f;
         return force;
     }
 
@@ -221,6 +228,7 @@ public class AutonomousAgent : AIAgent
         Vector3 steer = desired - movement.Velocity;
         Vector3 force = Vector3.ClampMagnitude(steer, movement.maxForce);
 
+        force.y = 0f;
         return force;
     }
 }
